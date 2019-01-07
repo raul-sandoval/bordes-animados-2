@@ -1,5 +1,7 @@
 $main-background: seagreen;
 $main-textcolor: #FFFFFF;
+$height: 300px;
+$width:250px;
 body
 {
     margin: 0;
@@ -12,5 +14,72 @@ h1
 {
     text-align: center;
     color: $main-textcolor;
+}
+
+.container
+{
+    $main-border: rgba(#FFFFFF,0.6);
+    $border-width: 9px;
+    @function restov()
+    {
+        @return -($height - $border-width);
+    }
+    @function restoh()
+    {
+        @return ($width - $border-width);
+    }
+    width: $width;
+    height: $height;
+    margin: 2em auto;
+    background: darken($main-background,10);
+    color: $main-textcolor;
+    font-size: 2.3em;
+    padding: 1em;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 0 2px darken($main-background,30);
+    position: relative;
+    &:before,
+    &:after
+    {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        background: $main-border;
+        transition: all 0.3s;
+    }
+    &:before
+    {
+        bottom: 0;
+        width: 0;
+        height: $border-width;
+        box-shadow: $width restov() $main-border;
+        /***********Horizontal***********/
+    }
+    &:after
+    {
+        top: 0;
+        width: $border-width;
+        height: 0;
+        box-shadow: restoh() $height $main-border;
+        /***********Vertical***********/
+    }
+    &:hover
+    {
+        &:before
+        {
+            width: 100%;
+            box-shadow: 0 restov() $main-border;
+        }
+        &:after
+        {
+            height: 100%;
+            box-shadow: restoh() 0 $main-border;
+        }
+    }
 }
 
