@@ -1,0 +1,16 @@
+$main-background: seagreen;
+$main-textcolor: #FFFFFF;
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: $main-background;
+}
+
+h1
+{
+    text-align: center;
+    color: $main-textcolor;
+}
+
